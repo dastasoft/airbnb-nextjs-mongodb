@@ -3,7 +3,11 @@ import { connectToDatabase } from "../util/mongodb";
 
 export default function Home({ properties }) {
   console.log(properties);
-  return <div></div>;
+  return (
+    <div>
+      <h1>Clonebnb</h1>
+    </div>
+  );
 }
 
 export async function getServerSideProps(context) {

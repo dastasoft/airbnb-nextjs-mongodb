@@ -1,46 +1,57 @@
-import Head from "next/head";
-import { connectToDatabase } from "../util/mongodb";
+import ApartmentCard from "../components/ApartmentCard"
+import { connectToDatabase } from "../util/mongodb"
+
+import styles from "./index.module.css"
 
 export default function Home({ properties }) {
-  console.log(properties);
   return (
-    <div>
+    <main>
       <h1>Clonebnb</h1>
-    </div>
-  );
+      <section className={styles.SectionGrid}>
+        {properties.map((apartment) => (
+          <ApartmentCard key={apartment.name} {...apartment} />
+        ))}
+      </section>
+    </main>
+  )
 }
 
 export async function getServerSideProps(context) {
-  const { db } = await connectToDatabase();
+  const { db } = await connectToDatabase()
 
   const apartments = await db
     .collection("listingsAndReviews")
     .find()
     .sort({ _id: 1 })
     .limit(40)
-    .toArray();
+    .toArray()
 
-  const properties = apartments.map(property => {
-    const price = JSON.parse(JSON.stringify(property.price));
-    let cleaningFee = 0;
+  const properties = apartments.map((property) => {
+    const price = JSON.parse(JSON.stringify(property.price))
+    let cleaningFee = 0
 
     if (property.cleaning_fee !== undefined) {
       cleaningFee = JSON.parse(JSON.stringify(property.cleaning_fee))
-        .$numberDecimal;
+        .$numberDecimal
     }
 
     return {
-      name: property.name,
-      image: property.images.picture_url,
       address: property.address,
-      summary: property.summary,
+      cleaningFee: cleaningFee,
       guests: property.accommodates,
+      image: property.images.picture_url,
+      name: property.name,
       price: price.$numberDecimal,
-      cleaning_fee: cleaningFee
-    };
-  });
+      summary: property.summary,
+      reviews: {
+        number: property.reviews.length,
+        score: property.review_scores.review_scores_rating || 0,
+      },
+      roomType: property.room_type,
+    }
+  })
 
   return {
-    props: { properties }
-  };
+    props: { properties },
+  }
 }

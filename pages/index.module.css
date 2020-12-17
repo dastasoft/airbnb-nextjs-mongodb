@@ -1,0 +1,23 @@
+.SectionGrid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 688px) {
+  .SectionGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 922px) {
+  .SectionGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1312px) {
+  .SectionGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

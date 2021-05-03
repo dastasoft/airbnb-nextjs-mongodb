@@ -1,22 +1,20 @@
-import ApartmentCard from "../components/ApartmentCard"
-import { connectToDatabase } from "../util/mongodb"
-
-import styles from "./index.module.css"
+import ApartmentCard from "@/components/ApartmentCard"
+import { connectToDatabase } from "@/util/mongodb"
 
 export default function Home({ properties }) {
   return (
-    <main>
+    <div>
       <h1>Clonebnb</h1>
-      <section className={styles.SectionGrid}>
+      <section>
         {properties.map((apartment) => (
           <ApartmentCard key={apartment.name} {...apartment} />
         ))}
       </section>
-    </main>
+    </div>
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const { db } = await connectToDatabase()
 
   const apartments = await db

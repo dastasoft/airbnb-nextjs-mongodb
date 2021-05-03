@@ -1,5 +1,3 @@
-import styles from "./ApartmentCard.module.css"
-
 export default function ApartmentCard({
   image,
   address,
@@ -9,9 +7,9 @@ export default function ApartmentCard({
   roomType,
 }) {
   return (
-    <div className={styles.Container}>
-      <img className={styles.Preview} src={image} />
-      <div className={styles.Data}>
+    <div>
+      <img src={image} />
+      <div>
         <div>
           {/* Icon Star */} {reviews.score} ({reviews.number})
         </div>

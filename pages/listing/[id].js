@@ -1,18 +1,18 @@
-import { connectToDatabase } from "../../util/mongodb";
+import { connectToDatabase } from "@/util/mongodb"
 
 export default function Apartment({ property }) {
-  return <div></div>;
+  return <div></div>
 }
 
 export async function getStaticPaths() {
   return {
     paths: [],
-    fallback: true
-  };
+    fallback: true,
+  }
 }
 
 export async function getStaticProps({ params }) {
-  const { db } = await connectToDatabase();
+  const { db } = await connectToDatabase()
 
   const apartment = await db.collection("listingsAndReviews").findOne(
     { _id: params.id },
@@ -24,15 +24,15 @@ export async function getStaticProps({ params }) {
         summary: 1,
         price: 1,
         cleaning_fee: 1,
-        amenities: 1
-      }
+        amenities: 1,
+      },
     }
-  );
+  )
 
   return {
     props: {
-      property: JSON.parse(JSON.stringify(apartment))
+      property: JSON.parse(JSON.stringify(apartment)),
     },
-    revalidate: 1
-  };
+    revalidate: 1,
+  }
 }

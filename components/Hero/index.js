@@ -5,6 +5,7 @@ import {
   Icon,
   Image,
   Heading,
+  Link,
 } from "@chakra-ui/react"
 
 export default function Hero() {
@@ -66,7 +67,8 @@ export default function Hero() {
                   Proof of Concept
                 </Box>
               </Heading>
-              <chakra.p
+              <Box
+                as="p"
                 mt={{ base: 3, sm: 5, md: 5 }}
                 fontSize={{ sm: "lg", md: "xl" }}
                 maxW={{ sm: "xl" }}
@@ -75,16 +77,15 @@ export default function Hero() {
               >
                 This proof of concept is made with Next.js, MongoDB Atlas and
                 Chakra UI. Enjoy the power of Static Site CDN and Serverless DB.
-              </chakra.p>
+              </Box>
               <Box
                 mt={{ base: 5, sm: 8 }}
                 display={{ sm: "flex" }}
                 justifyContent={{ sm: "center", lg: "start" }}
                 fontWeight="extrabold"
-                fontFamily="fantasy"
               >
                 <Box rounded="full" shadow="md">
-                  <chakra.a
+                  <Link
                     w="full"
                     display="flex"
                     alignItems="center"
@@ -101,7 +102,7 @@ export default function Hero() {
                     href="mailto:dastasoft@protonmail.com"
                   >
                     Contact
-                  </chakra.a>
+                  </Link>
                 </Box>
               </Box>
             </Box>

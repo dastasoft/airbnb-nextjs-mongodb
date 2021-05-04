@@ -1,9 +1,9 @@
-import { connectToDatabase } from "../../util/mongodb";
+import { connectToDatabase } from "@/util/mongodb"
 
 export default async function handler(req, res) {
-  const { db } = await connectToDatabase();
+  const { db } = await connectToDatabase()
 
-  const term = req.query.term;
+  const term = req.query.term
 
   const apartments = await db
     .collection("listingsAndReviews")
@@ -12,15 +12,15 @@ export default async function handler(req, res) {
         $search: {
           search: {
             query: term,
-            path: ["description", "amenities"]
-          }
-        }
+            path: ["description", "amenities"],
+          },
+        },
       },
       {
-        $limit: 20
-      }
+        $limit: 20,
+      },
     ])
-    .toArray();
+    .toArray()
 
-  res.json(apartments);
+  res.json(apartments)
 }

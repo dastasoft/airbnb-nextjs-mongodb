@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /api
+Host: https://apartmentfy.dastasoft.com/
+Sitemap: https://apartmentfy.dastasoft.com/sitemap.xml

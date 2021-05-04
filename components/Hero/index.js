@@ -7,7 +7,7 @@ import {
   Heading,
 } from "@chakra-ui/react"
 
-const KuttyHero = () => {
+export default function Hero() {
   const bg = useColorModeValue("white", "gray.800")
   return (
     <Box pos="relative" overflow="hidden" bg={bg} my={4}>
@@ -63,7 +63,7 @@ const KuttyHero = () => {
                   display={{ base: "block", xl: "inline" }}
                   color={useColorModeValue("brand.600", "brand.400")}
                 >
-                  A proof of concept
+                  Proof of Concept
                 </Box>
               </Heading>
               <chakra.p
@@ -96,8 +96,8 @@ const KuttyHero = () => {
                     bg="teal.600"
                     cursor="pointer"
                     _hover={{ bg: "teal.700" }}
-                    px={{ base: 8, md: 10 }}
-                    py={{ base: 3, md: 4 }}
+                    px={{ base: 4, md: 5 }}
+                    py="2"
                   >
                     Contact
                   </chakra.a>
@@ -126,5 +126,3 @@ const KuttyHero = () => {
     </Box>
   )
 }
-
-export default KuttyHero

@@ -21,13 +21,7 @@ export default function ChakraUIHeader() {
 
   return (
     <Box pos="relative">
-      <chakra.header
-        bg={bg}
-        w="full"
-        overflowY="hidden"
-        p="1em"
-        mx="auto"
-      >
+      <chakra.header bg={bg} w="full" overflowY="hidden" p="1em" mx="auto">
         <chakra.div>
           <Flex w="full" h="full" align="center" justify="space-between">
             <Flex align="center">
@@ -45,7 +39,9 @@ export default function ChakraUIHeader() {
               align="center"
               color="gray.400"
             >
-              <SocialMediaLinks />
+              <Box display={{ base: "none", md: "block" }}>
+                <SocialMediaLinks />
+              </Box>
               <ToggleTheme />
               <IconButton
                 display={{ base: "flex", md: "none" }}

@@ -1,6 +1,6 @@
 import { ButtonGroup, IconButton } from "@chakra-ui/react"
 import { MdEmail } from "react-icons/md"
-import { FaGithub, FaLinkedin, FaDev } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaDev, FaTwitter } from "react-icons/fa"
 
 const links = [
   {
@@ -12,6 +12,11 @@ const links = [
     icon: <FaLinkedin fontSize="20px" />,
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/dastasoft/",
+  },
+  {
+    icon: <FaTwitter fontSize="20px" />,
+    label: "Twitter",
+    href: "https://twitter.com/dastasoft/",
   },
   {
     icon: <MdEmail fontSize="20px" />,

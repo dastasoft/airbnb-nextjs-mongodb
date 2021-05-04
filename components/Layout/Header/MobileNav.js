@@ -1,6 +1,6 @@
-import { CloseButton, VStack, Button } from "@chakra-ui/react"
-import { AiFillHome, AiOutlineInbox } from "react-icons/ai"
-import { BsFillCameraVideoFill } from "react-icons/bs"
+import { CloseButton, VStack } from "@chakra-ui/react"
+
+import SocialMediaLinks from "@/components/SocialMediaLinks"
 
 export default function MobileNavContent({ mobileNav, bg }) {
   return (
@@ -24,20 +24,7 @@ export default function MobileNavContent({ mobileNav, bg }) {
         justifySelf="self-start"
         onClick={mobileNav.onClose}
       />
-      <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-        Dashboard
-      </Button>
-      <Button
-        w="full"
-        variant="solid"
-        colorScheme="brand"
-        leftIcon={<AiOutlineInbox />}
-      >
-        Inbox
-      </Button>
-      <Button w="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
-        Videos
-      </Button>
+      <SocialMediaLinks />
     </VStack>
   )
 }

@@ -1,4 +1,4 @@
-import { Box, Flex, Stack } from "@chakra-ui/react"
+import { Flex, Stack } from "@chakra-ui/react"
 
 import Copyright from "./Copyright"
 import Logo from "@/components/Logo"
@@ -13,8 +13,9 @@ export default function Footer() {
       p="1em"
       align="center"
       justify="space-between"
+      flexDirection={{ base: "column", md: "row" }}
     >
-      <Stack alignItems="flex-start">
+      <Stack alignItems={{ base: "center", md: "flex-start" }}>
         <Logo />
         <Copyright />
       </Stack>

@@ -5,7 +5,7 @@ import { Image } from "@chakra-ui/image"
 import { Button } from "@chakra-ui/button"
 
 export default function Apartment({ property }) {
-  return (
+  return property ? (
     <Flex flexDirection="column">
       <Image
         src={property?.images?.picture_url}
@@ -45,6 +45,8 @@ export default function Apartment({ property }) {
         Order a reservation
       </Button>
     </Flex>
+  ) : (
+    <Text>Apartment code not found</Text>
   )
 }
 

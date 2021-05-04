@@ -98,6 +98,7 @@ export default function Hero() {
                     _hover={{ bg: "teal.700" }}
                     px={{ base: 4, md: 5 }}
                     py="2"
+                    href="mailto:dastasoft@protonmail.com"
                   >
                     Contact
                   </chakra.a>

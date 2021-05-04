@@ -1,16 +1,15 @@
+import { SimpleGrid } from "@chakra-ui/react"
+
 import ApartmentCard from "@/components/ApartmentCard"
 import { connectToDatabase } from "@/util/mongodb"
 
 export default function Home({ properties }) {
   return (
-    <div>
-      <h1>Clonebnb</h1>
-      <section>
-        {properties.map((apartment) => (
-          <ApartmentCard key={apartment.name} {...apartment} />
-        ))}
-      </section>
-    </div>
+    <SimpleGrid minChildWidth="250px" spacing="2em" minH="full">
+      {properties.map((apartment) => (
+        <ApartmentCard key={apartment.id} {...apartment} />
+      ))}
+    </SimpleGrid>
   )
 }
 
@@ -25,27 +24,18 @@ export async function getServerSideProps() {
     .toArray()
 
   const properties = apartments.map((property) => {
-    const price = JSON.parse(JSON.stringify(property.price))
-    let cleaningFee = 0
-
-    if (property.cleaning_fee !== undefined) {
-      cleaningFee = JSON.parse(JSON.stringify(property.cleaning_fee))
-        .$numberDecimal
-    }
+    const price = JSON.parse(JSON.stringify(property.price)).$numberDecimal
+    const baths = JSON.parse(JSON.stringify(property.bathrooms)).$numberDecimal
 
     return {
-      address: property.address,
-      cleaningFee: cleaningFee,
-      guests: property.accommodates,
-      image: property.images.picture_url,
-      name: property.name,
-      price: price.$numberDecimal,
-      summary: property.summary,
-      reviews: {
-        number: property.reviews.length,
-        score: property.review_scores.review_scores_rating || 0,
-      },
-      roomType: property.room_type,
+      id: property._id,
+      imageUrl: property.images.picture_url,
+      beds: property.beds,
+      baths,
+      title: property.summary,
+      price,
+      reviewCount: property.reviews.length,
+      score: property.review_scores.review_scores_rating || 0,
     }
   })
 

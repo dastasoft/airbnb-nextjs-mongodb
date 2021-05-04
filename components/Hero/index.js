@@ -74,7 +74,7 @@ export default function Hero() {
                 color="gray.500"
               >
                 This proof of concept is made with Next.js, MongoDB Atlas and
-                Chakra UI. Enjoy the power of Static Site CDN and Serverless BD.
+                Chakra UI. Enjoy the power of Static Site CDN and Serverless DB.
               </chakra.p>
               <Box
                 mt={{ base: 5, sm: 8 }}
